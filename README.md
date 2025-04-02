@@ -21,7 +21,7 @@ A password generator built with Python and a GUI using [ttkbootstrap](https://tt
 
 ## 🖼️ Interface
 
-![passowrd generator preview](<Screenshot 2025-04-02 at 17.02.16.png>)
+![Password Generator Preview](<password_generator_screenshot.png>)
 
 ---
 
