@@ -2,8 +2,6 @@
 
 A password generator built with Python and a GUI using [ttkbootstrap](https://ttkbootstrap.readthedocs.io/). Easily create secure passwords with adjustable options and live strength feedback.
 
----
-
 ## ✨ Features
 
 - Adjustable password length (via slider)
@@ -17,13 +15,10 @@ A password generator built with Python and a GUI using [ttkbootstrap](https://tt
 - Copy to clipboard with one click
 - Password strength meter with dynamic color
 
----
-
 ## 🖼️ Interface
 
 ![Password Generator Preview](<password_generator_screenshot.png>)
 
----
 
 ## 🚀 Getting Started
 
