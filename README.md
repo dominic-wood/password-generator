@@ -1,4 +1,4 @@
-# 🔐 Password Generator (Tkinter + ttkbootstrap)
+# 🔐 Password Generator
 
 A password generator built with Python and a GUI using [ttkbootstrap](https://ttkbootstrap.readthedocs.io/). Easily create secure passwords with adjustable options and live strength feedback.
 
@@ -21,7 +21,7 @@ A password generator built with Python and a GUI using [ttkbootstrap](https://tt
 
 ## 🖼️ Interface
 
-![password generator preview](#) <!-- Optional: Add screenshot here -->
+![passowrd generator preview](<Screenshot 2025-04-02 at 17.02.16.png>)
 
 ---
 
@@ -36,3 +36,13 @@ A password generator built with Python and a GUI using [ttkbootstrap](https://tt
 
 ```bash
 pip install ttkbootstrap
+```
+### Run the app
+```bash
+pyhton password_generator.py
+```
+
+## Usage Tips
+- Change the length slider or toggle character options to automatically regenerate a new password
+- Use the **Generate Password** button if you want a fresh one with out changing any settings
+- Use **Copy to Clipboard** to quickly grab your password.
