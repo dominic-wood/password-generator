@@ -19,6 +19,7 @@ Quickly generate secure, customizable passwords with live strength feedback and 
 ## 🖼️ Interface
 
 ![Password Generator Preview](<assets/password_generator_screenshot.png>)
+![Password Generator Tutorial](<assets/password_generator_tutorial.mov>)
 
 ## 🚀 Getting Started
 
