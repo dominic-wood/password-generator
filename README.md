@@ -15,6 +15,7 @@ Quickly generate secure, customizable passwords with live strength feedback and 
 - 🔁 Manual **Generate Password** button  
 - 📋 One-click **Copy to Clipboard**  
 - 📶 Live password strength meter with dynamic color feedback  
+- 🌗 Icon toggle for light/dark mode
 
 ## 🖼️ Interface
 
@@ -37,7 +38,7 @@ pip install ttkbootstrap
 ### ▶️ Run the App
 
 ```bash
-python password_generator.py
+python main.py
 ```
 
 ## 💡 Usage Tips
@@ -45,6 +46,7 @@ python password_generator.py
 - Adjust the **length slider** or toggle any character option — a new password will be generated instantly  
 - Click **Generate Password** to refresh manually without changing settings  
 - Use **Copy to Clipboard** to instantly copy the password to your clipboard for easy pasting  
+- Tap the 🌙/☀️ icon in the corner to toggle themes
 
 ## 🤝 Contributing
 
