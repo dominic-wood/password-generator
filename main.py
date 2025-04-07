@@ -78,10 +78,17 @@ def update_length_label(*args):
 # GUI setup
 root = tk.Tk()
 root.title("Password Generator")
+root.geometry("450x280")  # Initial window size
+root.minsize(450, 280)  # Minimum window size
+
+# set window icon
+root.icon_image = tk.PhotoImage(file="assets/icon.png")
+root.iconphoto(True, root.icon_image)
+
 
 style = Style(theme="yeti")
 frame = ttk.Frame(root, padding=20)
-frame.pack()
+frame.pack(fill="x", anchor="n")
 
 # Password Length Slider
 ttk.Label(frame, text="Password Length:").grid(row=0, column=0, sticky="w")
@@ -110,18 +117,41 @@ ttk.Button(frame, text="Copy to Clipboard", command=copy_to_clipboard, bootstyle
 
 # Password Output
 password_var = tk.StringVar()
-ttk.Entry(frame, textvariable=password_var, width=40).grid(row=5, column=0, columnspan=2, pady=(0, 5))
+ttk.Entry(frame, textvariable=password_var, width=40).grid(
+    row=5, column=0, columnspan=2, pady=(10, 5), padx=10
+)
 
 # Strength bar + label
 strength_bar = ttk.Progressbar(frame, maximum=100, mode='determinate', bootstyle="secondary")
 strength_bar.grid(row=6, column=0, columnspan=2, sticky="ew", pady=(2, 2))
 
 strength_label = ttk.Label(frame, text="Strength: N/A", anchor="center", font="-size 10")
-strength_label.grid(row=7, column=0, columnspan=2, pady=(0, 10))
+strength_label.grid(row=7, column=0, columnspan=2, pady=(0, 5))
 
 # Reactive triggers
 for var in (upper_var, lower_var, digits_var, specials_var):
     var.trace_add("write", generate_password)
+
+# Place a tiny theme toggle in the top-right corner
+theme_icon = tk.StringVar(value="🌙")  # starts in light mode, offers dark
+
+def toggle_theme():
+    current = style.theme.name
+    if current == "yeti":
+        style.theme_use("darkly")
+        theme_icon.set("☀️")  # Switch to sun icon
+    else:
+        style.theme_use("yeti")
+        theme_icon.set("🌙")  # Switch to moon icon
+
+theme_button = ttk.Button(
+    root,
+    textvariable=theme_icon,
+    command=toggle_theme,
+    width=2,
+    bootstyle="secondary-outline"
+)
+theme_button.place(relx=1.0, rely=1.0, x=-20, y=-20, anchor="se")  # bottom-right corner
 
 # Initial generation
 generate_password()
