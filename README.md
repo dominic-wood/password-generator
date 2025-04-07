@@ -1,7 +1,7 @@
 # 🔐 Password Generator
 
 <p align="center">
-  <img src="assets/icon.png" width="350">
+  <img src="assets/Icon.png" width="350">
 </p>
 
 A modern, easy-to-use password generator built with Python and a sleek GUI using [ttkbootstrap](https://ttkbootstrap.readthedocs.io/).  
