@@ -1,5 +1,9 @@
 # 🔐 Password Generator
 
+<p align="center">
+  <img src="assets/icon.png" alt="NetTools Logo" width="350">
+</p>
+
 A modern, easy-to-use password generator built with Python and a sleek GUI using [ttkbootstrap](https://ttkbootstrap.readthedocs.io/).  
 Quickly generate secure, customizable passwords with live strength feedback and a clipboard copy feature.
 
