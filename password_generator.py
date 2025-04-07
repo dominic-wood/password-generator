@@ -24,11 +24,12 @@ def generate_password(*args):
     if not selected_sets:
         password_var.set("Please select at least one option.")
         strength_bar.configure(value=0, bootstyle="secondary")
+        strength_label.config(text="Strength: N/A")
         return
 
     # Guarantee inclusion of at least one character from each selected set
     password = [random.choice(char_set) for char_set in selected_sets]
-    
+
     # Fill the rest of the password
     remaining_length = length - len(password)
     all_chars = ''.join(selected_sets)
@@ -41,36 +42,30 @@ def generate_password(*args):
     password_var.set(password_str)
     update_strength_meter(password_str)
 
-
 def update_strength_meter(password):
     score = 0
     length = len(password)
 
-    if any(c.islower() for c in password):
-        score += 1
-    if any(c.isupper() for c in password):
-        score += 1
-    if any(c.isdigit() for c in password):
-        score += 1
-    if any(c in string.punctuation for c in password):
-        score += 1
-    if length >= 12:
-        score += 1
-    if length >= 16:
-        score += 1
+    if any(c.islower() for c in password): score += 1
+    if any(c.isupper() for c in password): score += 1
+    if any(c.isdigit() for c in password): score += 1
+    if any(c in string.punctuation for c in password): score += 1
+    if length >= 12: score += 1
+    if length >= 16: score += 1
 
     percent = int((score / 6) * 100)
 
     if percent < 40:
-        style = "danger"
+        style, text = "danger", "Weak"
     elif percent < 70:
-        style = "warning"
+        style, text = "warning", "Moderate"
     elif percent < 90:
-        style = "info"
+        style, text = "info", "Strong"
     else:
-        style = "success"
+        style, text = "success", "Very Strong"
 
     strength_bar.configure(value=percent, bootstyle=style)
+    strength_label.config(text=f"Strength: {text} ({percent}%)")
 
 def copy_to_clipboard():
     root.clipboard_clear()
@@ -113,12 +108,16 @@ ttk.Checkbutton(frame, text="Include Symbols", variable=specials_var).grid(row=3
 ttk.Button(frame, text="Generate Password", command=generate_password, bootstyle="primary", width=20).grid(row=4, column=0, sticky="ew", padx=(0, 5), pady=10)
 ttk.Button(frame, text="Copy to Clipboard", command=copy_to_clipboard, bootstyle="info-outline", width=20).grid(row=4, column=1, sticky="ew", padx=(5, 0), pady=10)
 
-# Password Output + Strength Bar
+# Password Output
 password_var = tk.StringVar()
 ttk.Entry(frame, textvariable=password_var, width=40).grid(row=5, column=0, columnspan=2, pady=(0, 5))
 
+# Strength bar + label
 strength_bar = ttk.Progressbar(frame, maximum=100, mode='determinate', bootstyle="secondary")
-strength_bar.grid(row=6, column=0, columnspan=2, sticky="ew", pady=(2, 10))
+strength_bar.grid(row=6, column=0, columnspan=2, sticky="ew", pady=(2, 2))
+
+strength_label = ttk.Label(frame, text="Strength: N/A", anchor="center", font="-size 10")
+strength_label.grid(row=7, column=0, columnspan=2, pady=(0, 10))
 
 # Reactive triggers
 for var in (upper_var, lower_var, digits_var, specials_var):
