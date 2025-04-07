@@ -11,24 +11,36 @@ def generate_password(*args):
     use_digits = digits_var.get()
     use_specials = specials_var.get()
 
-    char_pool = ''
+    selected_sets = []
     if use_lower:
-        char_pool += string.ascii_lowercase
+        selected_sets.append(string.ascii_lowercase)
     if use_upper:
-        char_pool += string.ascii_uppercase
+        selected_sets.append(string.ascii_uppercase)
     if use_digits:
-        char_pool += string.digits
+        selected_sets.append(string.digits)
     if use_specials:
-        char_pool += string.punctuation
+        selected_sets.append(string.punctuation)
 
-    if not char_pool:
+    if not selected_sets:
         password_var.set("Please select at least one option.")
         strength_bar.configure(value=0, bootstyle="secondary")
         return
 
-    password = ''.join(random.choice(char_pool) for _ in range(length))
-    password_var.set(password)
-    update_strength_meter(password)
+    # Guarantee inclusion of at least one character from each selected set
+    password = [random.choice(char_set) for char_set in selected_sets]
+    
+    # Fill the rest of the password
+    remaining_length = length - len(password)
+    all_chars = ''.join(selected_sets)
+    password += random.choices(all_chars, k=remaining_length)
+
+    # Shuffle the password list and convert to string
+    random.shuffle(password)
+    password_str = ''.join(password)
+
+    password_var.set(password_str)
+    update_strength_meter(password_str)
+
 
 def update_strength_meter(password):
     score = 0
