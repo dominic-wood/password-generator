@@ -19,8 +19,10 @@ Quickly generate secure, customizable passwords with live strength feedback and 
 
 ## 🖼️ Interface
 
-![Password Generator Light Mode](<assets/light_mode.png>) 
-![Password Generator Dark Mode](<assets/dark_mode.png>)
+<p align="center">
+  <img src="assets/light_mode.png" alt="Password Generator Light Mode" width="45%" />
+  <img src="assets/dark_mode.png" alt="Password Generator Dark Mode" width="45%" />
+</p>
 
 ## 🚀 Getting Started
 
