@@ -18,7 +18,8 @@ Quickly generate secure, customizable passwords with live strength feedback and 
 
 ## 🖼️ Interface
 
-![Password Generator Preview](<assets/password_generator_screenshot.png>)
+![Password Generator Light Mode](<assets/light_mode.png>) 
+![Password Generator Dark Mode](<assets/dark_mode.png>)
 
 ## 🚀 Getting Started
 
